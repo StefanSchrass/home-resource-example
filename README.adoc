@@ -1,0 +1,52 @@
+.home.json
+[source,json]
+----
+{
+    "service": "home-resource-example",
+    "description": "Home Service Example",
+    "version": "0.0.1-SNAPSHOT",
+    "build": "2020-06-06T14:07:29.421Z",
+    "author": "Stefan Schrass",
+    "endpoints": {
+        "urn:example:endpoints:foo": {
+            "id": "urn:example:endpoints:foo",
+            "title": "The Foos endpoint",
+            "description": "offers operations on Foos",
+            "methods": {
+                "GET": {
+                    "href": "/foo",
+                    "title": "for reading Foos",
+                    "type": "application/vnd.example.page+json"
+                },
+                "POST": {
+                    "href": "/foo",
+                    "title": "for adding Foos",
+                    "type": "application/vnd.example.foo+json"
+                }
+            }
+        },
+        "urn:example:endpoints:foo_from_id": {
+            "id": "urn:example:endpoints:foo_from_id",
+            "title": "The Foos from id endpoint",
+            "description": "offers operations on a Foo",
+            "methods": {
+                "PUT": {
+                    "href": "/foo/{fooId}",
+                    "title": "for modifying a Foo",
+                    "type": "application/vnd.example.foo+json"
+                },
+                "GET": {
+                    "href": "/foo/{fooId}",
+                    "title": "for getting a Foo",
+                    "type": "application/vnd.example.foo+json"
+                },
+                "DELETE": {
+                    "href": "/foo/{fooId}",
+                    "title": "for deleting a Foo",
+                    "type": "application/vnd.example.foo+json"
+                }
+            }
+        }
+    }
+}
+----
