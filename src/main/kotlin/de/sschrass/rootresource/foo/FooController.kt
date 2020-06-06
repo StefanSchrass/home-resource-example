@@ -1,8 +1,7 @@
 package de.sschrass.rootresource.foo
 
 import de.sschrass.rootresource.home.ControllerMapping
-import de.sschrass.rootresource.home.endpoint.Endpoint.FOOS
-import de.sschrass.rootresource.home.endpoint.Endpoint.FOO_FROM_FOOID
+import de.sschrass.rootresource.home.endpoint.Endpoint.*
 import de.sschrass.rootresource.home.endpoint.EndpointMapping
 import org.springframework.http.HttpStatus.*
 import org.springframework.http.ResponseEntity
@@ -15,6 +14,7 @@ class FooController(
         private val controllerMapping: ControllerMapping
 ) {
 
+    @EndpointMapping(HOME, "the home for this service")
     @GetMapping("home", produces = ["application/vnd.example.home+json"])
     fun get() = ResponseEntity.status(OK).body(controllerMapping.asHome())
 
@@ -22,7 +22,7 @@ class FooController(
     @GetMapping(produces = ["application/vnd.example.page+json"])
     fun getFoos() = ResponseEntity.status(OK).body("foos, lots of them but only a certain page.")
 
-    @EndpointMapping(FOOS, "for adding Foos")
+    @EndpointMapping(FOOS, "for adding a Foo")
     @PostMapping
     fun postFoo(@RequestBody body: String) = ResponseEntity.status(ACCEPTED)
 

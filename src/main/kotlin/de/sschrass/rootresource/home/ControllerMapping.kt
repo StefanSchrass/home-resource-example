@@ -27,6 +27,11 @@ class ControllerMapping(
                         version = buildProperties.version,
                         build = buildProperties.time,
                         author = buildProperties.get("author"),
+                        self = endpointMethodsMapping
+                                .filter { it.endpoint == Endpoint.HOME }
+                                .map { it.methods["GET"] }
+                                .map { it?.link }
+                                .firstOrNull(),
                         endpoints = endpointMethodsMapping.map { it.endpoint.id to it }.toMap()
                 )
             }

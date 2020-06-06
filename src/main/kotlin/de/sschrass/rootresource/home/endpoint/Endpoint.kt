@@ -9,6 +9,11 @@ enum class Endpoint(
         val title  : String,
         val description : String
 )  {
+    HOME(
+            id = "urn:example:endpoints:home",
+            title = "The Home endpoint",
+            description = "offers Home"
+    ),
     FOOS(
             id = "urn:example:endpoints:foo",
             title = "The Foos endpoint",

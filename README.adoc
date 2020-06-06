@@ -1,3 +1,10 @@
+=== Motivation
+
+The ultimate goal is to generate a home or index resource that serves as an entrypoint to a service.
+In a second use case this resource should serve as a foundation to build links to resources in the hosting service.
+
+=== Example
+
 .home.json
 [source,json]
 ----
@@ -5,23 +12,28 @@
     "service": "home-resource-example",
     "description": "Home Service Example",
     "version": "0.0.1-SNAPSHOT",
-    "build": "2020-06-06T14:07:29.421Z",
+    "build": "2020-06-06T14:33:14.496Z",
     "author": "Stefan Schrass",
+    "self": {
+        "href": "/foo/home",
+        "title": "the home for this service",
+        "type": "application/vnd.example.home+json"
+    },
     "endpoints": {
         "urn:example:endpoints:foo": {
             "id": "urn:example:endpoints:foo",
             "title": "The Foos endpoint",
             "description": "offers operations on Foos",
             "methods": {
+                "POST": {
+                    "href": "/foo",
+                    "title": "for adding a Foo",
+                    "type": "application/vnd.example.foo+json"
+                },
                 "GET": {
                     "href": "/foo",
                     "title": "for reading Foos",
                     "type": "application/vnd.example.page+json"
-                },
-                "POST": {
-                    "href": "/foo",
-                    "title": "for adding Foos",
-                    "type": "application/vnd.example.foo+json"
                 }
             }
         },
@@ -30,6 +42,11 @@
             "title": "The Foos from id endpoint",
             "description": "offers operations on a Foo",
             "methods": {
+                "DELETE": {
+                    "href": "/foo/{fooId}",
+                    "title": "for deleting a Foo",
+                    "type": "application/vnd.example.foo+json"
+                },
                 "PUT": {
                     "href": "/foo/{fooId}",
                     "title": "for modifying a Foo",
@@ -39,11 +56,18 @@
                     "href": "/foo/{fooId}",
                     "title": "for getting a Foo",
                     "type": "application/vnd.example.foo+json"
-                },
-                "DELETE": {
-                    "href": "/foo/{fooId}",
-                    "title": "for deleting a Foo",
-                    "type": "application/vnd.example.foo+json"
+                }
+            }
+        },
+        "urn:example:endpoints:home": {
+            "id": "urn:example:endpoints:home",
+            "title": "The Home endpoint",
+            "description": "offers Home",
+            "methods": {
+                "GET": {
+                    "href": "/foo/home",
+                    "title": "the home for this service",
+                    "type": "application/vnd.example.home+json"
                 }
             }
         }
